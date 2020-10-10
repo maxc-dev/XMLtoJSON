@@ -31,7 +31,7 @@
         "entryCosts": "0.0025"
       },
       "riskMeasures": {
-        "@version": "v1.0",
+        "-version": "v1.0",
         "sriRelatedValues": {
           "valueAtRisk": "0",
           "valueAtRiskEquivalentVolatility": "0",

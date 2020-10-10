@@ -44,12 +44,12 @@ public class Redo {
             final String content = fileReader.getFileContents();
 
             //creating the json string to be returned
-            StringBuffer jsonString = new StringBuffer("string:");
+            StringBuffer jsonString = new StringBuffer();
 
             String parentNode = getNextXMLTag(content);
             getNodeValue(jsonString, content, parentNode);
 
-            return jsonString.toString();
+            return "{" + jsonString.toString() + "}";
         }
 
 
@@ -62,8 +62,11 @@ public class Redo {
             } else if (!Objects.equals(nextNode, parent)) {
                 pointer = relativePointer;
                 jsonString.append("\"");
-                jsonString.append(parent);
+                jsonString.append(hasXMLTagAttributes(parent) ? extractXMLTagName(parent) : parent);
                 jsonString.append("\": {");
+                if (hasXMLTagAttributes(parent)) {
+                    jsonString.append(extractXMLTagValue(parent));
+                }
                 getAllChildNodes(jsonString, context, parent);
                 jsonString.append("}");
             }
@@ -71,16 +74,68 @@ public class Redo {
 
         private void getAllChildNodes(StringBuffer jsonString, String content, String parent) {
             String nextNode = null;
-            while (!Objects.equals(nextNode, "/" + parent)) {
+            while (!Objects.equals(nextNode, "/" + extractXMLTagName(parent))) {
                 nextNode = getNextXMLTag(content);
-                //System.out.println("Parent: " + parent + ", NextNode: " + nextNode);
-                if (Objects.equals(nextNode, "/" + parent) || nextNode == null) {
+                if (Objects.equals(nextNode, "/" + extractXMLTagName(parent)) || nextNode == null) {
                     jsonString.setLength(jsonString.length() - 2);
                     break;
                 }
                 getNodeValue(jsonString, content, nextNode);
                 jsonString.append(", ");
             }
+        }
+
+        /**
+         * Extracts XML attributes from inside the XML tags and returns them as attributes
+         * to be appended to a string buffer
+         *
+         * @param context The XML Tag context
+         *                EG: 'riskMeasures version="v1.0"'
+         *                EG: 'riskMeasures version="v1.0" attr2="test"'
+         * @return Will return the JSON format of the version & attr2 attribute
+         */
+        private String extractXMLTagValue(String context) {
+            String[] attributes = context.split("[ |\\n]");
+            if (attributes.length <= 1) {
+                return "";
+            }
+            StringBuffer constructXMLTags = new StringBuffer();
+            for (String attr : attributes) {
+                String[] nameValueSplit = attr.replace("\"", "").split("=");
+                if (nameValueSplit.length == 2) {
+                    constructXMLTags.append(JSONUtils.toJSONValue(XMLUtils.XML_TAG_ATTRIBUTE_PREFIX + nameValueSplit[0], nameValueSplit[1]));
+                    constructXMLTags.append(", ");
+                }
+            }
+            return constructXMLTags.toString();
+        }
+
+        /**
+         * If an XML tag has additional attributes in it, the name can
+         * be extracted separate from the extracted values in the latter
+         * method - extractXMLTagValue()
+         *
+         * @param context The XML Tag context
+         *                EG: 'riskMeasures version="v1.0"'
+         *                EG: 'riskMeasures version="v1.0" attr2="test"'
+         * @return Will return just 'riskMeasures'
+         * If there are no values in the XML tag then the original
+         * argument is returned.
+         */
+        private String extractXMLTagName(String context) {
+            String[] attributes = context.split("[ |\n]");
+            if (attributes.length >= 1) {
+                return attributes[0].trim();
+            }
+            return context;
+        }
+
+        /**
+         * Returns true if the context contains a " " or a new line,
+         * indicating a space in the XML tag for an attribute
+         */
+        private boolean hasXMLTagAttributes(String context) {
+            return context.contains(" ") || context.contains("\n");
         }
 
         /**
@@ -145,16 +200,15 @@ public class Redo {
         protected static class XMLUtils {
             private static final char XML_OPEN_TAG = '<';
             private static final char XML_CLOSE_TAG = '>';
+            private static final char XML_TAG_ATTRIBUTE_PREFIX = '@';
         }
 
         private static class LocalFileReader {
             private static final String RESOURCE_PATH = "src/dev/maxc/json/";
             private static final String FILE_EXTENSION = ".xml";
 
-            /**
-             * Name of the file
-             */
-            private String file;
+            /** Name of the file */
+            private final String file;
 
             /**
              * Reads the contents of a local file and returns it as a String
