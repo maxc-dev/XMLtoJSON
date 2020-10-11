@@ -178,9 +178,9 @@ public class Serializer {
      * @return Will return the JSON format of the version & attr2 attribute
      */
     private String extractXMLTagValue(String context) {
-        String[] attributes = context.split("[ |\\n]");
+        String[] attributes = context.split("[ |\n]");
         /*
-            If the attributes is 0 or 1 then there are ni attributes
+            If the attributes is 0 or 1 then there are no attributes
             to extract so nothing is returned
          */
         if (attributes.length <= 1) {
