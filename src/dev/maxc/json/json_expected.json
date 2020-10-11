@@ -1,132 +1,134 @@
 {
-  "data": {
-    "product": {
-      "priipCloudProductTemplate": "otc",
-      "priipCloudProductType": "fxSwap",
-      "productIdentifier": "RBI_fxSwap_EURUSD_long_1Y2D_EUR"
-    },
-    "document": {
-      "type": "final"
-    },
-    "properties": {
-      "includeEarlyRedemptionInExtraordinaryEventsAlert": "true"
-    },
-    "tradeDate": "2018-01-18",
-    "effectiveDate": "2018-01-20",
-    "fxSwap": {
-      "holder": "client",
-      "currencyPair": "EURUSD",
-      "notionalAmount": "1000000",
-      "notionalAmountCurrency": "EUR",
-      "terminationDate": "2019-01-20",
-      "forwardRate": {
-        "value": "1.25620"
-      },
-      "spotRate": {
-        "value": "1.2207"
-      }
-    },
-    "costs": {
-      "entryCosts": "0.0025"
-    },
-    "riskMeasures": {
-      "@version": "v1.0",
-      "sriRelatedValues": {
-        "valueAtRisk": "0",
-        "valueAtRiskEquivalentVolatility": "0",
-        "mrm": "7",
-        "crm": "2",
-        "sri": "7"
-      },
-      "performanceScenariosRelatedValues": {
-        "positiveScenarioPayoutRHP": "11139.633068665",
-        "positiveScenarioActualReturnRHP": "0.1139633069",
-        "positiveScenarioAverageReturnPerYearRHP": "0.114276",
-        "positiveScenarioPayoutIHP1": null,
-        "positiveScenarioActualReturnIHP1": null,
-        "positiveScenarioAverageReturnPerYearIHP1": null,
-        "positiveScenarioPayoutIHP2": null,
-        "positiveScenarioActualReturnIHP2": null,
-        "positiveScenarioAverageReturnPerYearIHP2": null,
-        "moderateScenarioPayoutRHP": "9984.9790016645",
-        "moderateScenarioActualReturnRHP": "-0.0015020998",
-        "moderateScenarioAverageReturnPerYearRHP": "-0.00150623",
-        "moderateScenarioPayoutIHP1": null,
-        "moderateScenarioActualReturnIHP1": null,
-        "moderateScenarioAverageReturnPerYearIHP1": null,
-        "moderateScenarioPayoutIHP2": null,
-        "moderateScenarioActualReturnIHP2": null,
-        "moderateScenarioAverageReturnPerYearIHP2": null,
-        "negativeScenarioPayoutRHP": "8955.6992819847",
-        "negativeScenarioActualReturnRHP": "-0.1044300718",
-        "negativeScenarioAverageReturnPerYearRHP": "-0.104717",
-        "negativeScenarioPayoutIHP1": null,
-        "negativeScenarioActualReturnIHP1": null,
-        "negativeScenarioAverageReturnPerYearIHP1": null,
-        "negativeScenarioPayoutIHP2": null,
-        "negativeScenarioActualReturnIHP2": null,
-        "negativeScenarioAverageReturnPerYearIHP2": null,
-        "stressScenarioPayoutRHP": "6841.9699464563",
-        "stressScenarioActualReturnRHP": "-0.3158030054",
-        "stressScenarioAverageReturnPerYearRHP": "-0.316671",
-        "stressScenarioPayoutIHP1": null,
-        "stressScenarioActualReturnIHP1": null,
-        "stressScenarioAverageReturnPerYearIHP1": null,
-        "stressScenarioPayoutIHP2": null,
-        "stressScenarioActualReturnIHP2": null,
-        "stressScenarioAverageReturnPerYearIHP2": null
-      }
-    },
-    "costOutputs": {
-      "costsOverTime": {
-        "totalCostsRHP": {
-          "value": "24.4219183409"
-        },
-        "totalCostsIHP1": {
-          "value": null
-        },
-        "totalCostsIHP2": {
-          "value": null
-        },
-        "reductionInActualYieldRHP": {
-          "value": "0.0024421918"
-        },
-        "reductionInActualYieldIHP1": {
-          "value": null
-        },
-        "reductionInActualYieldIHP2": {
-          "value": null
-        },
-        "reductionInYieldRHP": {
-          "value": "0.0024489008"
-        },
-        "reductionInYieldIHP1": {
-          "value": null
-        },
-        "reductionInYieldIHP2": {
-          "value": null
-        }
-      },
-      "compositionOfCosts": {
-        "actualEntryCosts": {
-          "value": "0.0024421918"
-        },
-        "actualOtherRecurringCostsPA": {
-          "value": null
-        },
-        "actualExitCosts": {
-          "value": "0"
-        },
-        "entryCosts": {
-          "value": "0.0024489008"
-        },
-        "otherRecurringCostsPA": {
-          "value": null
-        },
-        "exitCosts": {
-          "value": "0"
-        }
-      }
-    }
-  }
+	"priip": {
+		"data": {
+			"product": {
+				"priipCloudProductTemplate": "otc",
+				"priipCloudProductType": "fxSwap",
+				"productIdentifier": "RBI_fxSwap_EURUSD_long_1Y2D_EUR"
+			},
+			"document": {
+				"type": "final"
+			},
+			"properties": {
+				"includeEarlyRedemptionInExtraordinaryEventsAlert": "true"
+			},
+			"tradeDate": "2018-01-18",
+			"effectiveDate": "2018-01-20",
+			"fxSwap": {
+				"holder": "client",
+				"currencyPair": "EURUSD",
+				"notionalAmount": "1000000",
+				"notionalAmountCurrency": "EUR",
+				"terminationDate": "2019-01-20",
+				"forwardRate": {
+					"value": "1.25620"
+				},
+				"spotRate": {
+					"value": "1.2207"
+				}
+			},
+			"costs": {
+				"entryCosts": "0.0025"
+			},
+			"riskMeasures": {
+				"@version": "v1.0",
+				"sriRelatedValues": {
+					"valueAtRisk": "0",
+					"valueAtRiskEquivalentVolatility": "0",
+					"mrm": "7",
+					"crm": "2",
+					"sri": "7"
+				},
+				"performanceScenariosRelatedValues": {
+					"positiveScenarioPayoutRHP": "11139.633068665",
+					"positiveScenarioActualReturnRHP": "0.1139633069",
+					"positiveScenarioAverageReturnPerYearRHP": "0.114276",
+					"positiveScenarioPayoutIHP1": "null",
+					"positiveScenarioActualReturnIHP1": "null",
+					"positiveScenarioAverageReturnPerYearIHP1": "null",
+					"positiveScenarioPayoutIHP2": "null",
+					"positiveScenarioActualReturnIHP2": "null",
+					"positiveScenarioAverageReturnPerYearIHP2": "null",
+					"moderateScenarioPayoutRHP": "9984.9790016645",
+					"moderateScenarioActualReturnRHP": "-0.0015020998",
+					"moderateScenarioAverageReturnPerYearRHP": "-0.00150623",
+					"moderateScenarioPayoutIHP1": "null",
+					"moderateScenarioActualReturnIHP1": "null",
+					"moderateScenarioAverageReturnPerYearIHP1": "null",
+					"moderateScenarioPayoutIHP2": "null",
+					"moderateScenarioActualReturnIHP2": "null",
+					"moderateScenarioAverageReturnPerYearIHP2": "null",
+					"negativeScenarioPayoutRHP": "8955.6992819847",
+					"negativeScenarioActualReturnRHP": "-0.1044300718",
+					"negativeScenarioAverageReturnPerYearRHP": "-0.104717",
+					"negativeScenarioPayoutIHP1": "null",
+					"negativeScenarioActualReturnIHP1": "null",
+					"negativeScenarioAverageReturnPerYearIHP1": "null",
+					"negativeScenarioPayoutIHP2": "null",
+					"negativeScenarioActualReturnIHP2": "null",
+					"negativeScenarioAverageReturnPerYearIHP2": "null",
+					"stressScenarioPayoutRHP": "6841.9699464563",
+					"stressScenarioActualReturnRHP": "-0.3158030054",
+					"stressScenarioAverageReturnPerYearRHP": "-0.316671",
+					"stressScenarioPayoutIHP1": "null",
+					"stressScenarioActualReturnIHP1": "null",
+					"stressScenarioAverageReturnPerYearIHP1": "null",
+					"stressScenarioPayoutIHP2": "null",
+					"stressScenarioActualReturnIHP2": "null",
+					"stressScenarioAverageReturnPerYearIHP2": "null"
+				}
+			},
+			"costOutputs": {
+				"costsOverTime": {
+					"totalCostsRHP": {
+						"value": "24.4219183409"
+					},
+					"totalCostsIHP1": {
+						"value": "null"
+					},
+					"totalCostsIHP2": {
+						"value": "null"
+					},
+					"reductionInActualYieldRHP": {
+						"value": "0.0024421918"
+					},
+					"reductionInActualYieldIHP1": {
+						"value": "null"
+					},
+					"reductionInActualYieldIHP2": {
+						"value": "null"
+					},
+					"reductionInYieldRHP": {
+						"value": "0.0024489008"
+					},
+					"reductionInYieldIHP1": {
+						"value": "null"
+					},
+					"reductionInYieldIHP2": {
+						"value": "null"
+					}
+				},
+				"compositionOfCosts": {
+					"actualEntryCosts": {
+						"value": "0.0024421918"
+					},
+					"actualOtherRecurringCostsPA": {
+						"value": "null"
+					},
+					"actualExitCosts": {
+						"value": "0"
+					},
+					"entryCosts": {
+						"value": "0.0024489008"
+					},
+					"otherRecurringCostsPA": {
+						"value": "null"
+					},
+					"exitCosts": {
+						"value": "0"
+					}
+				}
+			}
+		}
+	}
 }
